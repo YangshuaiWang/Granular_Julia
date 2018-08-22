@@ -6,10 +6,11 @@ include("Deform_Config.jl")
 using JuLIP
 using Minimise_Energy
 using Deform
+using Pressure
 
 at = gran.setup_cell(1000, 0.85, 2.0)
 min_Energy(at)
-at0 = at
+at0 = deepcopy(at)
 deform_Config(at,"grow", 1.0001)
 
 # include("test.jl")
