@@ -28,6 +28,7 @@ function min_Energy(at::AbstractAtoms)
     set_calculator!(at, V)
 
     myresult = minimise!(at, precond = :id, method = :lbfgs, gtol=1e-14, verbose=2)
+# 
     is_converged = myresult.f_converged || myresult.g_converged || myresult.x_converged
     optmsg = myresult
 
