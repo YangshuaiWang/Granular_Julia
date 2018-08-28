@@ -8,7 +8,6 @@ import JuLIP: energy, forces, hessian_pos
 
 export min_Energy
 
-
 function min_Energy(at::AbstractAtoms)
     max_iter_num = 1000
 
@@ -28,7 +27,6 @@ function min_Energy(at::AbstractAtoms)
     set_calculator!(at, V)
 
     myresult = minimise!(at, precond = :id, method = :lbfgs, gtol=1e-14, verbose=2)
-# 
     is_converged = myresult.f_converged || myresult.g_converged || myresult.x_converged
     optmsg = myresult
 
@@ -46,10 +44,16 @@ function min_Energy(at::AbstractAtoms)
     optmsg.iterations = iter_num
     optmsg.f_calls = f_calls
     optmsg.g_calls = g_calls
-
+    
     set_data!(at, "Optmsg", optmsg)
-    set_data!(at, "Energy", energy(V, at))
-    calculate_Pressure(at)
+    
+    Energy = energy(V,at)
+    set_data!(at, "Energy", Energy)
+
+    p = Pressure.cal_Pressure(at)
+    set_data!(at, "Pressure", p)
+
+
     return at
 
 end
