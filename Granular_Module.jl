@@ -67,7 +67,7 @@ function setup_cell(N, ϕ, α; Lx = 1.0, Ly = 1.0, ratio=1.4, dim = 2)
     set_pbc!(at, [true, true, true])
     
  # setup energy and pressure
-    set_data!(at, "Energy", 0.0, Inf)
+ #   set_data!(at, "Energy", 0.0, Inf)
  #   k = [1.0 1.0; 1.0 1.0]
  #   α = [2.0 2.0; 2.0 2.0]
  #   r1 = minimum(at.M)
