@@ -50,7 +50,7 @@ function deform_Config(at::AbstractAtoms, deformType::AbstractString, deformValu
         at.X = X
     end
 
-    return min_Energy(at)
+    return Minimise_Energy.min_Energy(at)
 end
 
 end
