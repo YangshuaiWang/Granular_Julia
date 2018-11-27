@@ -20,3 +20,5 @@ V = MultiHZ.Multi_HZ(z, k, α, r0)
 
 set_calculator!(at, V)
 myresult = minimise!(at, precond = :id, method = :lbfgs, gtol=1e-14, verbose=2)
+
+# test edit!
